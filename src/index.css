@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'ISOCPEUR';
+  src: url('/fonts/isocpeur.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'ISOCPEUR', sans-serif;
+  font-weight: 300;
+}
