@@ -5,10 +5,13 @@ import SlotCard from "../features/weapon/SlotCard"
 import { weaponsData } from "../data/WeaponData"
 import { modifiersData } from "../data/ModifierData"
 import WeaponCard from "../features/weapon/WeaponCard"
+import TabBar from "../components/TabBar"
 function WeaponLayout() {
+    const tabs = ['Weapon', 'Zoom']
     const [weapons, setWeapons] = useState(weaponsData)
-    const [modsData, setModsData] = useState(modifiersData)
+    const [mods, setMods] = useState(modifiersData)
     const [currentWeapon, setCurrentWeapon] = useState()
+    const [activeTab, setActiveTab] = useState(tabs[0])
 
     const onSelectWeapon = (selectedWeapon) => {
         setCurrentWeapon(selectedWeapon)
@@ -27,7 +30,7 @@ function WeaponLayout() {
                         <SlotCard title={'Место под ствол'} src={'gun barrel.svg'} />
                         <div>
                             <SlotCard title={'Место под прицел'} src={'zoom.svg'} />
-                            <ModifierCard modifier={ modsData[0] }/>
+                            <ModifierCard modifier={ mods[0] }/>
                         </div>
                         <SlotCard title={'Место под: штык ножи, фонарик, коллиматоры, умную камеру и лазерные прицелы'} src={'second zoom.svg'} sizeIcon="large"/>
                         <div className="flex flex-col justify-center items-center text-lg p-2">
@@ -40,9 +43,12 @@ function WeaponLayout() {
                     </div>
                 </BrandPanel>
             </div>
-            <div className='flex gap-2 w-200 h-90'>  
-                {weapons.map(w => (<div className="w-full h-full cursor-pointer select-none" onClick={() => onSelectWeapon(w)}><WeaponCard weapon={ w } /></div>))}
-                <div onClick={() => setCurrentWeapon(null)}>X</div>
+            <div className="w-250 flex flex-col gap-2">
+                <TabBar tabNames={tabs} activeTab={activeTab} onChange={setActiveTab}/>
+                {activeTab === 'Weapon' && <div className='flex gap-2 w-200 h-90 overflow-y-auto'>  
+                    {weapons.map(w => (<div className="w-full h-full cursor-pointer select-none" onClick={() => onSelectWeapon(w)}><WeaponCard weapon={ w } /></div>))}
+                    <div onClick={() => setCurrentWeapon(null)}>X</div>
+                </div>}
             </div>
         </div>
     )
