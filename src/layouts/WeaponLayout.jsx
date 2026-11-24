@@ -2,24 +2,28 @@ import { useState } from "react"
 import BrandPanel from "../components/BrandPanel"
 import ModifierCard from "../features/weapon/ModifierCard"
 import SlotCard from "../features/weapon/SlotCard"
-import { weapon } from "../data/WeaponData"
+import { weaponsData } from "../data/WeaponData"
 import { modifiersData } from "../data/ModifierData"
-import WeaponCard from "../features/weapon/weaponCard"
+import WeaponCard from "../features/weapon/WeaponCard"
 function WeaponLayout() {
-    const [weaponData, setWeaponData] = useState(weapon)
+    const [weapons, setWeapons] = useState(weaponsData)
     const [modsData, setModsData] = useState(modifiersData)
+    const [currentWeapon, setCurrentWeapon] = useState()
 
-    const onClickMod = () => {
-
+    const onSelectWeapon = (selectedWeapon) => {
+        setCurrentWeapon(selectedWeapon)
     }
+    
     return(
         <div className='flex flex-col gap-20 p-2'>
-            <div className='w-200 h-150'>
+            <div className='w-250 h-190'>
                 <BrandPanel>
-                    <h2 className="text-center text-3xl">{weaponData.name}</h2>
+                    <h2 className="text-center text-3xl">{currentWeapon ? currentWeapon.name : "Лист оружия"}</h2>
                     <div className="w-full h-full relative grid grid-cols-4 grid-rows-2 gap-1">
                         <img className="absolute w-full h-full flex flex-col justify-center items-center p-10" src="gun.svg" alt="" />
-                        <SlotCard src={'gun.svg'} />
+                        <div>
+                            {currentWeapon ? <WeaponCard weapon={ currentWeapon } bgColor={"bg-blue-50"}/> : <SlotCard src={'gun.svg'} />}
+                        </div>
                         <SlotCard title={'Место под ствол'} src={'gun barrel.svg'} />
                         <div>
                             <SlotCard title={'Место под прицел'} src={'zoom.svg'} />
@@ -36,9 +40,9 @@ function WeaponLayout() {
                     </div>
                 </BrandPanel>
             </div>
-            <div className='w-50 h-65' onClick={onClickMod}>
-                {/* <ModifierCard modifier={ modsData[0] }/> */}
-                <WeaponCard weapon={ weaponData } />
+            <div className='flex gap-2 w-200 h-90'>  
+                {weapons.map(w => (<div className="w-full h-full cursor-pointer select-none" onClick={() => onSelectWeapon(w)}><WeaponCard weapon={ w } /></div>))}
+                <div onClick={() => setCurrentWeapon(null)}>X</div>
             </div>
         </div>
     )
