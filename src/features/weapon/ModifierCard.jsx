@@ -1,9 +1,9 @@
 import BrandPanel from "../../components/BrandPanel"
 import { sizes } from "./Enums.styles"
 
-function ModifierCard({ modifier, sizeIcon='medium' }){
+function ModifierCard({ modifier, bgColor, sizeIcon='medium' }){
     return(
-        <BrandPanel>
+        <BrandPanel bgColor={bgColor}>
             <div className="w-full h-full relative rounded-lg opacity-95">
                 <div className="absolute inset-0 flex flex-col justify-center items-center gap-2">
                     <h3 className="top-1 text-center text-2xl">{modifier.name}</h3>
