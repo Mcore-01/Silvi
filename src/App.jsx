@@ -1,12 +1,11 @@
 import './App.css'
-import CharacterCard from './features/character/CharacterCard'
-import WeaponCard from './features/weapon/WeaponCard'
+import WeaponLayout from './layouts/WeaponLayout'
 
 function App() {
 
     return (
-        <div className='p-2'>
-            <WeaponCard />
+        <div className='flex flex-col gap-20 p-2'>
+            <WeaponLayout />
         </div>
     )
 }

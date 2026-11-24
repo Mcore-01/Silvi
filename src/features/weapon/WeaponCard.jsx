@@ -1,24 +1,26 @@
-import BrandPanel from "../../components/BrandPanel";
-import SlotCard from "./SlotCard";
+import BrandPanel from "../../components/BrandPanel"
+import { sizes } from "./Enums.styles"
 
-function WeaponCard(){
-    return(
+function WeaponCard ({ weapon, sizeIcon='medium' }) {
+    return (
         <BrandPanel>
-            <h2 className="text-center text-3xl">Лист оружия</h2>
-            <div className="w-210 h-150 relative grid grid-cols-4 grid-rows-2 gap-1">
-                <img className="absolute w-full h-full flex flex-col justify-center items-center p-10" src="gun.svg" alt="" />
-                <SlotCard src={'gun.svg'} />
-                <SlotCard title={'Место под ствол'} src={'gun barrel.svg'} />
-                <SlotCard title={'Место под прицел'} src={'zoom.svg'} />
-                <SlotCard title={'Место под: штык ножи, фонарик, коллиматоры, умную камеру и лазерные прицелы'} src={'second zoom.svg'} sizeIcon="large"/>
-                <div className="flex flex-col justify-center items-center text-lg p-2">
-                    <div className="text-center border-b-2 w-full p-4">Итоговый урон</div>
-                    <div className="text-center border-b-2 w-full p-4">Бонус на попадание</div>
+            <article className="w-full h-full relative rounded-lg opacity-95">
+                <div className="absolute inset-0 flex flex-col justify-center items-center gap-2">
+                    <h3 className="top-1 text-center text-2xl">{weapon.name}</h3>
+                    <section className="flex w-full mb-2">
+                        <div className="bg-blue-900 w-full h-0.5 self-center m-0.5 mr-1"></div>
+                        <img className={`${sizes[sizeIcon]}`} src={ `./weapons/${weapon.src}` } alt="картинка оружия" />
+                        <div className="bg-blue-900 w-full h-0.5 self-center m-0.5 ml-1"></div>
+                    </section>
+                    <div className="grid grid-cols-2 grid-rows-2">
+                        <div>{weapon.diceDamage}</div>
+                        <div>{weapon.armorPenetration}</div>
+                        <div>{weapon.magazineCapacity}</div>
+                        <div>{`${weapon.normalDistance}/${weapon.maxDistance}`}</div>
+                    </div>
+                    <p className="text-center">{weapon.description}</p>
                 </div>
-                <SlotCard title={'Место под подствольник'} src={'under barrel.svg'} />
-                <SlotCard title={'Место под магазин'} src={'magazine.svg'} />
-                <SlotCard title={'Место под тип боеприпаса'} src={'bullet.svg'} sizeIcon="small" />
-            </div>
+            </article>
         </BrandPanel>
     )
 }
