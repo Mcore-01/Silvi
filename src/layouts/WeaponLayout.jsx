@@ -28,7 +28,7 @@ function WeaponLayout() {
             setCurrentZoom(selectedMod)
         }   
     }
-    
+
     return(
         <div className='flex gap-20 p-2'>
             <div className='w-250 h-190'>
@@ -39,17 +39,17 @@ function WeaponLayout() {
                         <div>
                             {currentWeapon ? <WeaponCard weapon={ currentWeapon } bgColor={"bg-blue-50"}/> : <SlotCard src={'gun.svg'} />}
                         </div>
-                        <SlotCard title={'Место под ствол'} src={'gun barrel.svg'} />
+                        <SlotCard title={'Место под ствол'} src={'gun_barrel.svg'} />
                         <div>
                             {currentZoom ? <ModifierCard modifier={ currentZoom } bgColor={"bg-blue-50"}/> : 
                                     <SlotCard title={'Место под прицел'} src={'zoom.svg'} />}
                         </div>
-                        <SlotCard title={'Место под: штык ножи, фонарик, коллиматоры, умную камеру и лазерные прицелы'} src={'second zoom.svg'} sizeIcon="large"/>
+                        <SlotCard title={'Место под: штык ножи, фонарик, коллиматоры, умную камеру и лазерные прицелы'} src={'second_zoom.svg'} sizeIcon="large"/>
                         <div className="flex flex-col justify-center items-center text-lg p-2">
                             <div className="text-center border-b-2 w-full p-4">Итоговый урон: {currentWeapon && `${currentWeapon.diceDamage} + ${currentWeapon.bonusDamage}`}</div>
                             <div className="text-center border-b-2 w-full p-4">Бонус на попадание: {currentWeapon && `${currentWeapon.bonusHit}`}</div>
                         </div>
-                        <SlotCard title={'Место под подствольник'} src={'under barrel.svg'} />
+                        <SlotCard title={'Место под подствольник'} src={'under_barrel.svg'} />
                         <SlotCard title={'Место под магазин'} src={'magazine.svg'} />
                         <SlotCard title={'Место под тип боеприпаса'} src={'bullet.svg'} sizeIcon="small" />
                     </div>

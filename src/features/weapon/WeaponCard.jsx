@@ -1,7 +1,7 @@
 import BrandPanel from "../../components/BrandPanel"
-import { sizes } from "./Enums.styles"
+import SvgIcon from "../../components/SvgIcon"
 
-function WeaponCard ({ weapon, bgColor, sizeIcon='medium' }) {
+function WeaponCard ({ weapon, bgColor }) {
     return (
         <BrandPanel bgColor={bgColor}>
             <article className="w-full h-full relative rounded-lg opacity-95">
@@ -9,7 +9,7 @@ function WeaponCard ({ weapon, bgColor, sizeIcon='medium' }) {
                     <h3 className="top-1 text-center text-2xl">{weapon.name}</h3>
                     <section className="flex w-full mb-2">
                         <div className="bg-blue-900 w-full h-0.5 self-center m-0.5 mr-1"></div>
-                        <img className={`${sizes[sizeIcon]}`} src={ `./weapons/${weapon.src}` } alt="картинка оружия" />
+                        <SvgIcon src={`./weapons/${weapon.src}`} className={`w-20 h-10 bg-blue-900 dark:bg-amber-600`} />
                         <div className="bg-blue-900 w-full h-0.5 self-center m-0.5 ml-1"></div>
                     </section>
                     <div className="relative grid grid-cols-2 grid-rows-2 gap-px border bg-black text-center text-lg">
