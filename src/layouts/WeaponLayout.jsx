@@ -26,9 +26,9 @@ function WeaponLayout() {
                 setCurrentWeapon(prev => ({...prev, bonusHit: currentWeapon.bonusHit + selectedMod.hit}))
 
             setCurrentZoom(selectedMod)
-        }
-            
+        }   
     }
+    
     return(
         <div className='flex gap-20 p-2'>
             <div className='w-250 h-190'>
