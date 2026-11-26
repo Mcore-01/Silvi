@@ -12,7 +12,7 @@ function WeaponCard ({ weapon, bgColor }) {
                         <SvgIcon src={`./weapons/${weapon.src}`} className={`w-20 h-10 bg-icon`} />
                         <div className="bg-icon w-full h-0.5 self-center m-0.5 ml-1"></div>
                     </section>
-                    <div className="relative grid grid-cols-2 grid-rows-2 gap-0.5 border bg-icon text-center text-lg">
+                    <div className="relative grid grid-cols-2 grid-rows-2 gap-0.5 border border-icon bg-icon text-center text-lg">
                         <div className={`bg-background p-1 ${bgColor}`}>{weapon.diceDamage}</div>
                         <div className={`bg-background p-1 ${bgColor}`}>{weapon.armorPenetration}</div>
                         <div className={`bg-background p-1 ${bgColor}`}>{weapon.magazineCapacity}</div>

@@ -14,7 +14,7 @@ function HeaderLayout(){
             </section>
             <section className="flex align-middle">
                 <button className="text-5xl" onClick={() => handleSwitchTheme()}>
-                    {isDarkTheme ? <SvgIcon src={`./icons/sun.svg`} className={`w-20 h-10 bg-amber-600 cursor-pointer`} /> :
+                    {isDarkTheme ? <SvgIcon src={`./icons/sun.svg`} className={`w-20 h-10 bg-icon cursor-pointer`} /> :
                         <SvgIcon src={`./icons/moon.svg`} className={`w-20 h-10 bg-icon cursor-pointer`} />}
                 </button>
             </section>

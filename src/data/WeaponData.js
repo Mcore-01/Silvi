@@ -13,7 +13,7 @@ export const weapons = [
         maxDistance: 60,
         magazineCapacity: 10,
         slots: [],
-        conflictSlots: ['']
+        conflictSlots: [4, 5]
     },
     {
         id: 2,
