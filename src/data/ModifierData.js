@@ -1,4 +1,4 @@
-export const modifiersData  = [
+export const modifiers  = [
     {   
         id: 1, 
         name: "Оптический прицел", 

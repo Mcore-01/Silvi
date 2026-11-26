@@ -16,6 +16,7 @@
   --fg-primary: black;
   --fg-secondary: rgb(255, 255, 255);
   --icon: #1c398e;
+  --hover: #93C5FD;
 }
 
 .dark {
@@ -24,7 +25,7 @@
   --fg-primary: white;
   --fg-secondary: black;
   --icon: #93C5FD;
-
+  --hover: #526dbd;
 }
 
 @theme {
@@ -33,6 +34,7 @@
   --color-fg-primary: var(--fg-primary);
   --color-fg-secondary: var(--fg-secondary);
   --color-icon: var(--icon);
+  --color-hover: var(--hover);
 }
 
 body {

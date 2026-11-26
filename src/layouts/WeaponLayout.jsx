@@ -2,30 +2,23 @@ import { useState } from "react"
 import BrandPanel from "../components/BrandPanel"
 import ModifierCard from "../features/weapon/ModifierCard"
 import SlotCard from "../features/weapon/SlotCard"
-import { weaponsData } from "../data/WeaponData"
-import { modifiersData } from "../data/ModifierData"
+import { weapons } from "../data/WeaponData"
+import { modifiers } from "../data/ModifierData"
 import WeaponCard from "../features/weapon/WeaponCard"
 import TabBar from "../components/TabBar"
 import SvgIcon from "../components/SvgIcon"
 function WeaponLayout() {
     const tabs = ['Оружие', 'Прицел']
-    const [weapons, setWeapons] = useState(weaponsData)
-    const [mods, setMods] = useState(modifiersData)
-    const [currentWeapon, setCurrentWeapon] = useState()
-    const [currentZoom, setCurrentZoom] = useState()
+    const [currentWeapon, setCurrentWeapon] = useState(null)
+    const [currentZoom, setCurrentZoom] = useState(null)
     const [activeTab, setActiveTab] = useState(tabs[0])
-
+    const bonusToHit = currentWeapon?.bonusHit  + currentZoom?.hit
     const onSelectWeapon = (selectedWeapon) => {
         setCurrentWeapon(selectedWeapon)
     }
     
     const onSelectMod = (selectedMod) => {
         if(selectedMod.type === 'zoom'){
-            if(currentZoom)
-                setCurrentWeapon(prev => ({...prev, bonusHit: currentWeapon.bonusHit - currentZoom.hit + selectedMod.hit}))
-            else
-                setCurrentWeapon(prev => ({...prev, bonusHit: currentWeapon.bonusHit + selectedMod.hit}))
-
             setCurrentZoom(selectedMod)
         }   
     }
@@ -36,9 +29,7 @@ function WeaponLayout() {
                 <BrandPanel>
                     <h2 className="text-center text-3xl">{currentWeapon ? currentWeapon.name : "Лист оружия"}</h2>
                     <div className="w-full h-full relative grid grid-cols-4 grid-rows-2 gap-1">
-                        {/* <img className="absolute w-full h-full flex flex-col justify-center items-center p-10" src="gun.svg" alt="" /> */}
                         <SvgIcon src={`./gun.svg`} className={`absolute w-full h-full flex flex-col justify-center items-center p-10 bg-icon`} />
-
                         <div>
                             {currentWeapon ? <WeaponCard weapon={ currentWeapon } bgColor={"bg-slotcard"}/> : <SlotCard src={'gun.svg'} />}
                         </div>
@@ -50,7 +41,7 @@ function WeaponLayout() {
                         <SlotCard title={'Место под: штык ножи, фонарик, коллиматоры, умную камеру и лазерные прицелы'} src={'second_zoom.svg'} sizeIcon="large"/>
                         <div className="flex flex-col justify-center items-center text-lg p-2">
                             <div className="text-center border-b-2 w-full p-4">Итоговый урон: {currentWeapon && `${currentWeapon.diceDamage} + ${currentWeapon.bonusDamage}`}</div>
-                            <div className="text-center border-b-2 w-full p-4">Бонус на попадание: {currentWeapon && `${currentWeapon.bonusHit}`}</div>
+                            <div className="text-center border-b-2 w-full p-4">Бонус на попадание: {currentWeapon && `${bonusToHit}`}</div>
                         </div>
                         <SlotCard title={'Место под подствольник'} src={'under_barrel.svg'} />
                         <SlotCard title={'Место под магазин'} src={'magazine.svg'} />
@@ -66,7 +57,7 @@ function WeaponLayout() {
                 </div>}
                 {activeTab === 'Прицел' && <div className='flex gap-2 w-200 h-90'>  
                     {
-                        mods.filter(m => m.type === 'zoom')
+                        modifiers.filter(m => m.type === 'zoom')
                             .map(m => 
                                 (<div className="min-w-60 min-h-80 cursor-pointer select-none" onClick={() => onSelectMod(m)}>
                                     <ModifierCard modifier={ m } />
