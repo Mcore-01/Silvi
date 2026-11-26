@@ -13,10 +13,10 @@ function WeaponCard ({ weapon, bgColor }) {
                         <div className="bg-icon w-full h-0.5 self-center m-0.5 ml-1"></div>
                     </section>
                     <div className="relative grid grid-cols-2 grid-rows-2 gap-0.5 border bg-icon text-center text-lg">
-                        <div className="bg-background p-1">{weapon.diceDamage}</div>
-                        <div className="bg-background p-1">{weapon.armorPenetration}</div>
-                        <div className="bg-background p-1">{weapon.magazineCapacity}</div>
-                        <div className="bg-background p-1">{`${weapon.normalDistance}/${weapon.maxDistance}`}</div>
+                        <div className={`bg-background p-1 ${bgColor}`}>{weapon.diceDamage}</div>
+                        <div className={`bg-background p-1 ${bgColor}`}>{weapon.armorPenetration}</div>
+                        <div className={`bg-background p-1 ${bgColor}`}>{weapon.magazineCapacity}</div>
+                        <div className={`bg-background p-1 ${bgColor}`}>{`${weapon.normalDistance}/${weapon.maxDistance}`}</div>
                     </div>
                     <p className="text-center text-lg">{weapon.description}</p>
                 </div>

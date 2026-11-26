@@ -40,11 +40,11 @@ function WeaponLayout() {
                         <SvgIcon src={`./gun.svg`} className={`absolute w-full h-full flex flex-col justify-center items-center p-10 bg-icon`} />
 
                         <div>
-                            {currentWeapon ? <WeaponCard weapon={ currentWeapon } bgColor={"bg-blue-50"}/> : <SlotCard src={'gun.svg'} />}
+                            {currentWeapon ? <WeaponCard weapon={ currentWeapon } bgColor={"bg-slotcard"}/> : <SlotCard src={'gun.svg'} />}
                         </div>
                         <SlotCard title={'Место под ствол'} src={'gun_barrel.svg'} />
                         <div>
-                            {currentZoom ? <ModifierCard modifier={ currentZoom } bgColor={"bg-blue-50"}/> : 
+                            {currentZoom ? <ModifierCard modifier={ currentZoom } bgColor={"bg-slotcard"}/> : 
                                     <SlotCard title={'Место под прицел'} src={'zoom.svg'} />}
                         </div>
                         <SlotCard title={'Место под: штык ножи, фонарик, коллиматоры, умную камеру и лазерные прицелы'} src={'second_zoom.svg'} sizeIcon="large"/>
