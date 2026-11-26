@@ -6,6 +6,7 @@ import { weaponsData } from "../data/WeaponData"
 import { modifiersData } from "../data/ModifierData"
 import WeaponCard from "../features/weapon/WeaponCard"
 import TabBar from "../components/TabBar"
+import SvgIcon from "../components/SvgIcon"
 function WeaponLayout() {
     const tabs = ['Оружие', 'Прицел']
     const [weapons, setWeapons] = useState(weaponsData)
@@ -35,7 +36,9 @@ function WeaponLayout() {
                 <BrandPanel>
                     <h2 className="text-center text-3xl">{currentWeapon ? currentWeapon.name : "Лист оружия"}</h2>
                     <div className="w-full h-full relative grid grid-cols-4 grid-rows-2 gap-1">
-                        <img className="absolute w-full h-full flex flex-col justify-center items-center p-10" src="gun.svg" alt="" />
+                        {/* <img className="absolute w-full h-full flex flex-col justify-center items-center p-10" src="gun.svg" alt="" /> */}
+                        <SvgIcon src={`./gun.svg`} className={`absolute w-full h-full flex flex-col justify-center items-center p-10 bg-icon`} />
+
                         <div>
                             {currentWeapon ? <WeaponCard weapon={ currentWeapon } bgColor={"bg-blue-50"}/> : <SlotCard src={'gun.svg'} />}
                         </div>

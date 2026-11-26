@@ -10,6 +10,31 @@
   font-display: swap;
 }
 
+:root {
+  --background: white;
+  --slotcard: #EFF6FF;
+  --fg-primary: black;
+  --fg-secondary: rgb(255, 255, 255);
+  --icon: #1c398e;
+}
+
+.dark {
+  --background: black;
+  --slotcard: #172333;
+  --fg-primary: white;
+  --fg-secondary: black;
+  --icon: #93C5FD;
+
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-slotcard: var(--slotcard);
+  --color-fg-primary: var(--fg-primary);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-icon: var(--icon);
+}
+
 body {
   font-family: 'ISOCPEUR', sans-serif;
   font-weight: 300;
