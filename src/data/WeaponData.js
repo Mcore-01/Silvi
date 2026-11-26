@@ -12,7 +12,8 @@ export const weapons = [
         normalDistance: 18,
         maxDistance: 60,
         magazineCapacity: 10,
-        slots: []
+        slots: [],
+        conflictSlots: ['']
     },
     {
         id: 2,
