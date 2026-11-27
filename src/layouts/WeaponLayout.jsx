@@ -61,7 +61,7 @@ function WeaponLayout() {
                             onClick={() => onSelectWeapon(w)}><WeaponCard weapon={ w } />
                         </button>))}
                 </div>}
-                {SLOTS.map(slot => (activeTab === slot.label && <ModifierTab key={slot.id} modType={slot.id} onSelectMod={onSelectMod}/>))}
+                {SLOTS.map(slot => (activeTab === slot.label && <ModifierTab key={slot.id} modType={slot.id} weaponType={currentWeapon ? currentWeapon.type : undefined} onSelectMod={onSelectMod}/>))}
             </div>
         </div>
     )
