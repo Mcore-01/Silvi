@@ -29,7 +29,7 @@ export const modifiers  = [
     {   
         id: 4, 
         name: "Укороченный магазин", 
-        src: "zoom.svg", 
+        src: "magazine.svg", 
         type: 'magazine',
         description: "при комбинации с короченным стволом, понижает тяжесть оружия, перезарядка за недостатки: только половина боезопаса", 
         hit: 1, 
@@ -38,7 +38,7 @@ export const modifiers  = [
     {   
         id: 5, 
         name: "ДТК", 
-        src: "barrel.svg", 
+        src: "gun_barrel.svg", 
         type: 'barrel',
         description: "снижает порок получения повреждения оружия на 1", 
         hit: 1, 

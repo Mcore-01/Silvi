@@ -18,6 +18,7 @@ function WeaponLayout() {
     const bonusToHit = (currentWeapon?.bonusHit ?? 0) + modsList.reduce((sum, mod) => sum + (mod.hit ?? 0), 0)
     const onSelectWeapon = (selectedWeapon) => {
         setCurrentWeapon(selectedWeapon)
+        setModsList([])
     }
     
     const onSelectMod = (selectedMod) => {
@@ -35,13 +36,14 @@ function WeaponLayout() {
                         <SvgIcon src={`./gun.svg`} className={`absolute w-full h-full flex flex-col justify-center items-center p-10 bg-icon`} />       
                         <div>
                             {currentWeapon ? <WeaponCard weapon={ currentWeapon } bgColor={"bg-slotcard"}/> : 
-                                <SlotCard src={'gun.svg'} />}
+                                <SlotCard src={'./gun.svg'} />}
                         </div>
-                        {SLOTS.map(slot => 
-                            (<div>
-                                {modsList.find(mod => mod.type === slot.id) ? <ModifierCard modifier={ modsList.find(mod => mod.type === slot.id) } bgColor={"bg-slotcard"}/> : 
+                        {SLOTS.map(slot => {
+                            const mod = modsList.find(mod => mod.type === slot.id)
+                            return <div key={slot.id}>
+                                { mod ? <ModifierCard modifier={ mod } bgColor={"bg-slotcard"}/> : 
                                 <SlotCard title={slot.title} src={slot.icon} />}    
-                            </div>)
+                            </div>}
                         )}
                         <div className="flex flex-col justify-center items-center text-lg p-2 row-start-2">
                             <div className="text-center border-b-2 w-full p-4">Итоговый урон: {currentWeapon && `${currentWeapon.diceDamage} + ${currentWeapon.bonusDamage}`}</div>
@@ -53,14 +55,13 @@ function WeaponLayout() {
             <div className="w-250 flex flex-col gap-2">
                 <TabBar tabNames={tabs} activeTab={activeTab} onChange={setActiveTab}/>
                 {activeTab === 'Оружие' && <div className='flex gap-2 w-200 h-90'>  
-                    {weapons.map(w => (<button className="min-w-60 min-h-80 cursor-pointer select-none" onClick={() => onSelectWeapon(w)}><WeaponCard weapon={ w } /></button>))}
-                    <div onClick={() => setCurrentWeapon(null)}>X</div>
+                    {weapons.map(w => 
+                        (<button key={w.id} 
+                            className="min-w-60 min-h-80 cursor-pointer select-none" 
+                            onClick={() => onSelectWeapon(w)}><WeaponCard weapon={ w } />
+                        </button>))}
                 </div>}
-                {SLOTS.map(slot => 
-                    (<div>
-                        {activeTab === slot.label && <ModifierTab modType={slot.id} onSelectMod={onSelectMod}/>}    
-                    </div>)
-                 )}
+                {SLOTS.map(slot => (activeTab === slot.label && <ModifierTab key={slot.id} modType={slot.id} onSelectMod={onSelectMod}/>))}
             </div>
         </div>
     )
